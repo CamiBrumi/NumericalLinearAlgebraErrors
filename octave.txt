@@ -1,0 +1,14 @@
+format long 
+p=[1 -1]; // octave p=[1, -1]; coma o espai estan en horitzontal, en canvi, amb ";" és en vertical
+for i=2:20
+		p=conv (p,[1,-i]);
+	endfor;
+
+p //para visualizar
+para que el bucle vaya de dos en dos
+for i=1:2:21
+
+roots(p); // calculem les arrels
+perturb=[0,2^(-23), zeros(1,19)] // matriu de 1 fila i 19 columnes, totes les pos de zeros
+
+q=p+perturb
