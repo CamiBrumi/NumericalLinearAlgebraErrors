@@ -11,7 +11,7 @@ vector<double> taylor_grau(int n) {
     int factorial = 1;
     for (int i = 1; i <= n; ++i){
         factorial *= i;
-        polinomi[n - i] = 1./factorial;
+        polinomi[n - i] = 1./double(factorial);
     }
     return polinomi;
 }
@@ -32,7 +32,6 @@ vector<double> Ruffini(vector<double>& polinomi, double x) { //ha de ser enter??
     for (int i = 1; i <= m; ++i) {
         p[i] = polinomi[i] + x*p[i - 1];
     }
-    cout << "Debug: residu (dins rutina) = " << p[m] << endl;
     return p;
 }
 
