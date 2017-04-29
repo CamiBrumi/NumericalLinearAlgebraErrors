@@ -16,7 +16,7 @@ void swap(fila& a, fila& b) { // intercanvia dues files
 // no se com fer la matriu perm
 // com mirem si hi ha un nombre parell/senar de permutacions?
 // aquest programa em compila però no em dóna el resultat esperat
-int pivotatge_parcial(matriu a, int n, double tol, int k) {
+int pivotatge_parcial(matriu& a, int n, double tol, int k) {
 	for(int i = k; i <= n - 1; ++i) {
 			double max_fila = abs(a[i][k]);
 			for(int j = k + 1; j <= n - 1; ++j) { // busquem el màxim (en valor absolut) de la fila i-èssima
@@ -45,8 +45,9 @@ int pivotatge_parcial(matriu a, int n, double tol, int k) {
 int lu(matriu& a, int n, fila perm, double tol) { //
 	for(int k = 0; k < n - 1; ++k) {
 		int max_pos = pivotatge_parcial(a, n, tol, k); // he borat lo del pivot
-			swap(a[max_pos], a[k]);
-			perm[k] = max_pos;
+		if (max_pos == 0) return 0;
+		swap(a[max_pos], a[k]);
+		perm[k] = max_pos;
 		for(int i = k + 1; i <= n - 1; ++i) {
 			double m = a[i][k]/a[k][k]; // m = m[i][k]
 			for(int j = k; j <= n - 1; ++j) {
@@ -70,6 +71,9 @@ void escriu(matriu& v, int n) { // escriu una matriu per pantalla
 	}
 }
 
+void resol(double **a, double x[], double b[], int n, int perm[]);
+
+
 
 int main() {
 	int n;
@@ -79,7 +83,8 @@ int main() {
 	escriu(v, n);
 	cout << endl;
 	fila p(n, 0);
-	lu(v, n, p, 0.01);
-	escriu(v, n);
+	if(lu(v, n, p, 0.00001) == 0) cout << "nain" << endl;
+	else
+		escriu(v, n);
 }
 
