@@ -1,0 +1,6 @@
+add <numele fisierului> (WARNING: nu pune o carpeta intreaga ca sa nu se salveze si executabilele)
+commit -a (a inseamna toate fisierele ce le-ai adaugat)
+push origin master (ca sa nu fie numai pe calculator toate schimbarile ci si pe nor)
+
+atunci cand nu-ti aduci aminte de vreo comanda fa:
+CTRL+R
